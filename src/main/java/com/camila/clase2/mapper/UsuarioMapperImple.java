@@ -16,11 +16,12 @@ public class UsuarioMapperImple implements UsuarioMapper {
         }
         Usuario usuario = new Usuario();
         usuario.setId_usuario(usuarioDto.getId_usuario());
-        usuario.setNombre(usuarioDto.getNom());
-        usuario.setApellido(usuarioDto.getApe());
-        usuario.setEmail(usuarioDto.getMail());
+        usuario.setNombre(usuarioDto.getNombre());
+        usuario.setApellido(usuarioDto.getApellido());
+        usuario.setEmail(usuarioDto.getEmail());
         return usuario;
     }
+    
     @Override
     public UsuarioDto toUsuarioDto(Usuario usuario) {
         if(usuario == null){
@@ -29,9 +30,9 @@ public class UsuarioMapperImple implements UsuarioMapper {
         
         UsuarioDto usuarioDto = new UsuarioDto();
         usuarioDto.setId_usuario(usuario.getId_usuario());
-        usuarioDto.setNom(usuario.getNombre());
-        usuarioDto.setApe(usuario.getApellido());
-        usuarioDto.setMail(usuario.getEmail());
+        usuarioDto.setNombre(usuario.getNombre());
+        usuarioDto.setApellido(usuario.getApellido());
+        usuarioDto.setEmail(usuario.getEmail());
         return usuarioDto;
     }
 }

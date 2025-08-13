@@ -5,9 +5,9 @@ import com.camila.clase2.models.Usuario;
 
 public interface UsuarioMapper {
 
-    Usuario toUsuario(UsuarioDto usuarioDto);
+    Usuario toUsuario(UsuarioDto usuarioDto);//consultar usu
 
-    UsuarioDto toUsuarioDto(Usuario usuario);
+    UsuarioDto toUsuarioDto(Usuario usuario);//regitrar usu
 
     
 
