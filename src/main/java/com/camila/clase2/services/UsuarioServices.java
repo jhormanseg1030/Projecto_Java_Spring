@@ -11,4 +11,6 @@ public interface UsuarioServices {
 
     public List<UsuarioDto> getUsuarios(); // Obtener todos los usuarios
 
+    public UsuarioDto deleteUsuario(Integer id);
+
 }
