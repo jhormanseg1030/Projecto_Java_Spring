@@ -18,12 +18,13 @@ import com.camila.clase2.models.Usuario;
 import com.camila.clase2.repositoryes.UsuarioRepositories;
 import com.camila.clase2.services.UsuarioServices;
 
+
 @RestController
 public class UsuarioController {
 
+
     @Autowired
     private UsuarioRepositories userRepo;
-
 
     @GetMapping("/")
     public String Usuario() {
@@ -67,12 +68,20 @@ public class UsuarioController {
         return userRepo.findByNombre(nombre);
     }
 
-    //metodo mediante arquitectura de capas
     @Autowired
     private UsuarioServices userserv;
-
+    
     @GetMapping("/usuario/{id_usuario}")
     public ResponseEntity<UsuarioDto>getUsuario(@PathVariable Integer id_usuario){
         return new ResponseEntity<>(userserv.getUsuario(id_usuario),HttpStatus.OK);
+    }
+    //crea usuario
+    @PostMapping("/usuari")
+    public ResponseEntity<UsuarioDto> saveUsuario(@RequestBody UsuarioDto usuarioDto){
+        return new ResponseEntity<>(userserv.saveUsuario(usuarioDto), HttpStatus.CREATED);
+    }
+    @GetMapping("/use")
+    public ResponseEntity<List<UsuarioDto>> getUsuarios() {
+        return new ResponseEntity<>(userserv.getUsuarios(), HttpStatus.OK);
     }
 }

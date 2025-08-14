@@ -1,12 +1,14 @@
 package com.camila.clase2.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.camila.clase2.dto.UsuarioDto;
 import com.camila.clase2.models.Usuario;
 
 @Component
-
 public class UsuarioMapperImple implements UsuarioMapper {
 
     @Override
@@ -15,10 +17,10 @@ public class UsuarioMapperImple implements UsuarioMapper {
             return null;
         }
         Usuario usuario = new Usuario();
-        usuario.setId_usuario(usuarioDto.getId_usuario());
-        usuario.setNombre(usuarioDto.getNombre());
-        usuario.setApellido(usuarioDto.getApellido());
-        usuario.setEmail(usuarioDto.getEmail());
+        usuario.setId_usuario(usuarioDto.getId());
+        usuario.setNombre(usuarioDto.getNom());
+        usuario.setApellido(usuarioDto.getApe());
+        usuario.setEmail(usuarioDto.getMail());
         return usuario;
     }
     
@@ -29,10 +31,22 @@ public class UsuarioMapperImple implements UsuarioMapper {
         }
         
         UsuarioDto usuarioDto = new UsuarioDto();
-        usuarioDto.setId_usuario(usuario.getId_usuario());
-        usuarioDto.setNombre(usuario.getNombre());
-        usuarioDto.setApellido(usuario.getApellido());
-        usuarioDto.setEmail(usuario.getEmail());
+        usuarioDto.setId(usuario.getId_usuario());
+        usuarioDto.setNom(usuario.getNombre());
+        usuarioDto.setApe(usuario.getApellido());
+        usuarioDto.setMail(usuario.getEmail());
         return usuarioDto;
     }
+    @Override
+    public List<UsuarioDto> toUsuarioDtoList(List<Usuario> usuarios){
+        if(usuarios == null ){
+            return null;
+        }
+        List<UsuarioDto> list = new ArrayList<UsuarioDto>(usuarios.size());
+        for(Usuario usuario : usuarios) {
+            list.add(toUsuarioDto(usuario));
+        }
+        return list;
+    }
 }
+

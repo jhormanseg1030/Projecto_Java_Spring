@@ -1,5 +1,7 @@
 package com.camila.clase2.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ import com.camila.clase2.repositoryes.UsuarioRepositories;
 public class UsuarioServicesImplement implements UsuarioServices {
     @Autowired
     private UsuarioRepositories userRepo;
+    
+    @Autowired
     private UsuarioMapper usuarioMapper;
 
     @Override
@@ -19,5 +23,14 @@ public class UsuarioServicesImplement implements UsuarioServices {
         Usuario usuario = userRepo.findById(id_usuario).get();
         return usuarioMapper.toUsuarioDto(usuario);
     }
-
+    @Override
+    public UsuarioDto saveUsuario(UsuarioDto usuarioDto) {
+        Usuario usuario = usuarioMapper.toUsuario(usuarioDto);
+        return usuarioMapper.toUsuarioDto(userRepo.save(usuario));
+    }
+    @Override
+    public List<UsuarioDto> getUsuarios() {
+        List<Usuario> usuarios = userRepo.findAll();
+        return usuarioMapper.toUsuarioDtoList(usuarios);
+    }
 }

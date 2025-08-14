@@ -10,6 +10,7 @@ public interface ProductoRepositories extends JpaRepository <Producto, Integer> 
 
    List <Producto> findByCategoria(String categoria);
    List <Producto> findByNombre(String nombre);
+   
 
 }
 

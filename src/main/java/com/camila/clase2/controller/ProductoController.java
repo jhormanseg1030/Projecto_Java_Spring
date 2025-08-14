@@ -3,6 +3,8 @@ package com.camila.clase2.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,8 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.camila.clase2.dto.ProductoDto;
 import com.camila.clase2.models.Producto;
 import com.camila.clase2.repositoryes.ProductoRepositories;
+import com.camila.clase2.services.ProductoServices;
+
 
 
 
@@ -69,4 +74,17 @@ public class ProductoController {
     public List<Producto> getProductoByNombre(@PathVariable String nombre) {
         return productoRepo.findByNombre(nombre);
     }
-} 
+
+    @Autowired
+    private ProductoServices productoServ;
+
+    @GetMapping("/producto/{id_producto}")
+    public ResponseEntity<ProductoDto>getProducto(@PathVariable Integer id_producto){
+        return new ResponseEntity<>(productoServ.getProducto(id_producto), HttpStatus.OK);
+    }
+
+    @PostMapping("/product")
+    public ResponseEntity<ProductoDto> saveProducto(@RequestBody ProductoDto productoDto){
+        return new ResponseEntity<>(productoServ.saveProducto(productoDto), HttpStatus.CREATED);
+    }
+}
