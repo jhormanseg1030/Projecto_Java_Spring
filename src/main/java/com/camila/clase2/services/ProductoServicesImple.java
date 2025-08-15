@@ -1,5 +1,7 @@
 package com.camila.clase2.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,28 @@ public class ProductoServicesImple implements ProductoServices {
     public ProductoDto saveProducto(ProductoDto productoDto) {
         Producto producto = producMapper.toProducto(productoDto);
         return producMapper.toProductoDto(producRepo.save(producto));
+    }
+    @Override
+    public List<ProductoDto> getProductos() {
+        List<Producto> productos = producRepo.findAll();
+        return producMapper.toProductoDtoList(productos);
+    }
+    @Override
+    public ProductoDto deleteProducto(Integer id) {
+        Producto producto = producRepo.findById(id).get();
+        producRepo.deleteById(id);
+        return producMapper.toProductoDto(producto);
+    }
+    @Override
+    public ProductoDto updateProducto(Integer id_producto, ProductoDto productoDto) {
+        Producto producto = producRepo.findById(id_producto).get();
+        producMapper.updateProducto(producto, productoDto);
+        return producMapper.toProductoDto(producRepo.save(producto));
+    }
+    @Override
+    public List<ProductoDto> getProductoByCategoria(String categoria) {
+        List<Producto> productos = producRepo.findByCategoria(categoria);
+        return producMapper.toProductoDtoList(productos);
     }
 }
 

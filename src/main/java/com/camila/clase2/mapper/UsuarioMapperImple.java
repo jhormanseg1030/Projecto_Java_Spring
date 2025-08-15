@@ -48,5 +48,15 @@ public class UsuarioMapperImple implements UsuarioMapper {
         }
         return list;
     }
+    @Override
+    public void updateUsuario(Usuario usuario, UsuarioDto usuarioDto){
+        if(usuarioDto == null){
+            return;
+        }
+        usuario.setNombre(usuarioDto.getNom());
+        usuario.setApellido(usuarioDto.getApe());
+        usuario.setEmail(usuarioDto.getMail());
+    }
 }
+
 

@@ -39,4 +39,10 @@ public class UsuarioServicesImplement implements UsuarioServices {
         userRepo.deleteById(id_usuario);
         return usuarioMapper.toUsuarioDto(usuario);
     }
+    @Override
+    public UsuarioDto updateUser(Integer id_usuario, UsuarioDto usuarioDto) {
+        Usuario usuario = userRepo.findById(id_usuario).get();
+        usuarioMapper.updateUsuario(usuario, usuarioDto);
+        return usuarioMapper.toUsuarioDto(userRepo.save(usuario));
+    }
 }

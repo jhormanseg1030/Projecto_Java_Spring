@@ -84,8 +84,12 @@ public class UsuarioController {
     public ResponseEntity<List<UsuarioDto>> getUsuarios() {
         return new ResponseEntity<>(userserv.getUsuarios(), HttpStatus.OK);
     }
-    @DeleteMapping("/userser/{id}")
+    @DeleteMapping("/userser /{id}")
     public ResponseEntity<UsuarioDto> deleteUsuario(@PathVariable Integer id){
         return new ResponseEntity<>(userserv.deleteUsuario(id), HttpStatus.OK);
+    }
+    @PutMapping("/user/{id_usuario}")
+    public ResponseEntity<UsuarioDto> updateUser(@PathVariable Integer id_usuario, @RequestBody UsuarioDto usuarioDto) {
+        return new ResponseEntity<>(userserv.updateUser(id_usuario, usuarioDto), HttpStatus.OK);
     }
 }

@@ -1,5 +1,8 @@
 package com.camila.clase2.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import com.camila.clase2.dto.ProductoDto;
@@ -32,5 +35,30 @@ public class ProductoMapperImple implements ProductoMapper {
         productoDto.setPre(producto.getPrecio());
         return productoDto;
     }
+    @Override
+    public List<ProductoDto> toProductoDtoList(List<Producto> productos) {
+        if (productos == null) {
+            return null;
+        }
+        List<ProductoDto> list = new ArrayList<ProductoDto>(productos.size());
+        for (Producto producto : productos){
+            list.add(toProductoDto(producto));
+        }
+        return list;
+    }
+    @Override
+    public void updateProducto(Producto producto, ProductoDto productoDto) {
+        if (productoDto == null) {
+            return;
+        }
+        producto.setNombre(productoDto.getNom());
+        producto.setCategoria(productoDto.getCate());
+        producto.setPrecio(productoDto.getPre());
+    }
+    @Override
+    public List<ProductoDto> findByCategoria(String categoria) {
+        return null;
+    }
+
 
 }
