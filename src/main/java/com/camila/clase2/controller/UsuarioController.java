@@ -92,4 +92,10 @@ public class UsuarioController {
     public ResponseEntity<UsuarioDto> updateUser(@PathVariable Integer id_usuario, @RequestBody UsuarioDto usuarioDto) {
         return new ResponseEntity<>(userserv.updateUser(id_usuario, usuarioDto), HttpStatus.OK);
     }
+
+    @PostMapping("/crearUsuario")
+    public UsuarioDto crearUsuario(@RequestBody UsuarioDto usuarioDto) {
+        return userserv.saveUsuario(usuarioDto);
+    }
+    
 }

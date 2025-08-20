@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class UsuarioDto {
-    private Integer id;
-    private String nom;
-    private String ape;
-    private String mail;
-    private DocumentoDto docum;
+public class DocumentoDto {
+    private Integer id_Docum;
+    private String Numero;
 }

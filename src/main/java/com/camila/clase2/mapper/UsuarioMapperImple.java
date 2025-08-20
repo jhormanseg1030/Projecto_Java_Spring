@@ -10,6 +10,11 @@ import com.camila.clase2.models.Usuario;
 
 @Component
 public class UsuarioMapperImple implements UsuarioMapper {
+    public final DocumentoMapper documentoMapper;
+
+    public UsuarioMapperImple(DocumentoMapper documentoMapper) {
+        this.documentoMapper = documentoMapper;
+    }
 
     @Override
     public Usuario toUsuario(UsuarioDto usuarioDto) {
@@ -21,6 +26,8 @@ public class UsuarioMapperImple implements UsuarioMapper {
         usuario.setNombre(usuarioDto.getNom());
         usuario.setApellido(usuarioDto.getApe());
         usuario.setEmail(usuarioDto.getMail());
+        usuario.setDocumento(documentoMapper.toDocumento(usuarioDto.getDocum()));
+
         return usuario;
     }
     
@@ -35,6 +42,8 @@ public class UsuarioMapperImple implements UsuarioMapper {
         usuarioDto.setNom(usuario.getNombre());
         usuarioDto.setApe(usuario.getApellido());
         usuarioDto.setMail(usuario.getEmail());
+        usuarioDto.setDocum(documentoMapper.toDocumentoDto(usuario.getDocumento()));
+
         return usuarioDto;
     }
     @Override

@@ -13,7 +13,7 @@ public interface UsuarioServices {
 
     public UsuarioDto deleteUsuario(Integer id);
 
-    public UsuarioDto updateUser(Integer usuario, UsuarioDto usuarioDto); // Actualizar un usuario existente
+    public UsuarioDto updateUser(Integer usuario, UsuarioDto usuarioDto);// Actualizar un usuario existente
     
     //public UsuarioDto  // Actualizar un usuario existente
 }

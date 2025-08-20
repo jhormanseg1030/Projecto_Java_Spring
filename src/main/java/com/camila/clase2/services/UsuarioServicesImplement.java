@@ -18,6 +18,11 @@ public class UsuarioServicesImplement implements UsuarioServices {
     @Autowired
     private UsuarioMapper usuarioMapper;
 
+    public UsuarioServicesImplement(UsuarioRepositories userRepo, UsuarioMapper usuarioMapper) {
+        this.userRepo = userRepo;
+        this.usuarioMapper = usuarioMapper;
+    }
+
     @Override
     public UsuarioDto getUsuario(Integer id_usuario){
         Usuario usuario = userRepo.findById(id_usuario).get();
