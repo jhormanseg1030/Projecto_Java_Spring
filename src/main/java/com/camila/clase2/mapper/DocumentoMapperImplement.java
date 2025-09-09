@@ -10,12 +10,12 @@ public class DocumentoMapperImplement implements DocumentoMapper {
     @Override
     public Documento toDocumento(DocumentoDto documentoDto) {
         if (documentoDto == null) {
-            return null;
+        return null;
         }
         Documento documento = new Documento();
         documento.setId_Docum(documentoDto.getId_Docum());
         documento.setNumero(documentoDto.getNumero());
-        return documento;
+    return documento;
     }
 
     @Override
@@ -23,10 +23,9 @@ public class DocumentoMapperImplement implements DocumentoMapper {
         if (documento == null) {
             return null;
         }
-        DocumentoDto documentoDto = new DocumentoDto();
-        documentoDto.setId_Docum(documento.getId_Docum());
-        documentoDto.setNumero(documento.getNumero());
-        return documentoDto;
+    DocumentoDto documentoDto = new DocumentoDto();
+    documentoDto.setId_Docum(documento.getId_Docum());
+    documentoDto.setNumero(documento.getNumero());
+    return documentoDto;
     }
-
 }

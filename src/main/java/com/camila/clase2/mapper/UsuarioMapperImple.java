@@ -27,7 +27,6 @@ public class UsuarioMapperImple implements UsuarioMapper {
         usuario.setApellido(usuarioDto.getApe());
         usuario.setEmail(usuarioDto.getMail());
         usuario.setDocumento(documentoMapper.toDocumento(usuarioDto.getDocum()));
-
         return usuario;
     }
     
@@ -36,7 +35,6 @@ public class UsuarioMapperImple implements UsuarioMapper {
         if(usuario == null){
             return null;
         }
-        
         UsuarioDto usuarioDto = new UsuarioDto();
         usuarioDto.setId(usuario.getId_usuario());
         usuarioDto.setNom(usuario.getNombre());

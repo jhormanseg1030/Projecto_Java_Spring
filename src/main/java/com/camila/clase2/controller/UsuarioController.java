@@ -97,5 +97,4 @@ public class UsuarioController {
     public UsuarioDto crearUsuario(@RequestBody UsuarioDto usuarioDto) {
         return userserv.saveUsuario(usuarioDto);
     }
-    
 }
